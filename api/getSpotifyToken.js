@@ -1,7 +1,7 @@
 const axios = require("axios");
 
-const CLIENT_ID = "***REMOVED***";
-const CLIENT_SECRET = "***REMOVED***";
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
 module.exports = async (req, res) => {
   if (req.method === "GET") {
