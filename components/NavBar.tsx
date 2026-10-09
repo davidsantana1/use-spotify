@@ -16,7 +16,7 @@ export function NavBar({ query, onQueryChange }: NavBarProps) {
   }
 
   return (
-    <nav className="mb-4 flex flex-wrap items-center justify-center gap-3 bg-black p-4 sm:mb-8 sm:px-8 lg:grid lg:grid-cols-[1fr_minmax(0,25rem)_1fr]">
+    <nav className="mb-3 flex flex-wrap items-center justify-center gap-2 bg-black p-3 sm:mb-8 sm:gap-3 sm:p-4 sm:px-8 lg:grid lg:grid-cols-[1fr_minmax(0,25rem)_1fr]">
       <Logo />
       <div className="relative w-full max-w-100 lg:max-w-none">
         <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-placeholder" />
@@ -28,7 +28,7 @@ export function NavBar({ query, onQueryChange }: NavBarProps) {
           aria-label="Search albums"
           placeholder="Search albums or artists"
           autoFocus
-          className="focus-ring w-full rounded-md bg-input p-4 pr-12 pl-12 font-bold text-white placeholder:text-placeholder [&::-webkit-search-cancel-button]:appearance-none"
+          className="focus-ring w-full rounded-md bg-input p-3 pr-12 pl-12 sm:p-4 sm:pr-12 sm:pl-12 font-bold text-white placeholder:text-placeholder [&::-webkit-search-cancel-button]:appearance-none"
         />
         {query && (
           <button

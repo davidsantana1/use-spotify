@@ -13,7 +13,7 @@ import { SkeletonRows } from "./Skeleton";
 import { StatusMessage } from "./StatusMessage";
 import { TrackList } from "./TrackList";
 
-export function AlbumDetails({ album }: { album: Album }) {
+export function AlbumDetails({ album, onClose }: { album: Album; onClose?: () => void }) {
   const [track, setTrack] = useState<Track | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -34,7 +34,6 @@ export function AlbumDetails({ album }: { album: Album }) {
     setTrack(next);
     const panel = topRef.current?.parentElement;
     panel?.scrollTo({ top: 0 });
-    panel?.scrollIntoView({ block: "nearest" });
     headingRef.current?.focus({ preventScroll: true });
   }
 
@@ -59,6 +58,16 @@ export function AlbumDetails({ album }: { album: Album }) {
           className={`absolute inset-0 -z-10 rounded-t-[19px] bg-surface transition-opacity duration-300 ${isScrolled ? "opacity-100" : "opacity-0"}`}
           style={barGradient ? { backgroundImage: barGradient } : undefined}
         />
+        {!track && onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Back to results"
+            className="focus-ring grid size-8 shrink-0 cursor-pointer place-items-center rounded-full bg-white/10 transition-colors hover:bg-accent hover:text-black lg:hidden"
+          >
+            <ChevronLeft aria-hidden="true" className="size-4" strokeWidth={3} />
+          </button>
+        )}
         {track && (
           <button
             type="button"
@@ -101,8 +110,8 @@ export function AlbumDetails({ album }: { album: Album }) {
             alt={album.name}
             width={640}
             height={640}
-            sizes="(min-width: 80rem) 224px, (min-width: 60rem) 400px, 100vw"
-            className="mb-3 w-full max-w-100 rounded-xl shadow-[0_8px_32px_rgb(0_0_0/0.5)] xl:mb-0 xl:w-56 xl:shrink-0"
+            sizes="(min-width: 80rem) 224px, (min-width: 25rem) 400px, 100vw"
+            className="mb-5 w-full max-w-100 self-center rounded-xl shadow-[0_8px_32px_rgb(0_0_0/0.5)] lg:mb-3 lg:self-start xl:mb-0 xl:w-56 xl:shrink-0"
           />
         )}
 
