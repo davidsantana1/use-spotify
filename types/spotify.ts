@@ -13,6 +13,7 @@ export interface Track {
   id: string;
   name: string;
   uri: string;
+  duration_ms: number;
   artists: Artist[];
   external_urls: { spotify: string };
 }
@@ -21,13 +22,14 @@ export interface SimplifiedAlbum {
   id: string;
   name: string;
   images: SpotifyImage[];
+  artists: Artist[];
+  release_date: string;
 }
 
 export interface Album extends SimplifiedAlbum {
   uri: string;
-  release_date: string;
+  album_type: "album" | "single" | "compilation";
   total_tracks: number;
-  artists: Artist[];
   external_urls: { spotify: string };
   tracks: { items: Track[] };
 }
