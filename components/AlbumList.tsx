@@ -19,6 +19,7 @@ interface AlbumListProps {
   isLoadingMore: boolean;
   onLoadMore: () => void;
   onSelect: (id: string) => void;
+  className?: string;
   ref?: Ref<HTMLElement>;
 }
 
@@ -32,6 +33,7 @@ export function AlbumList({
   isLoadingMore,
   onLoadMore,
   onSelect,
+  className,
   ref,
 }: AlbumListProps) {
   const endRef = useRef<HTMLDivElement>(null);
@@ -42,7 +44,7 @@ export function AlbumList({
   }, [isEndInView, hasMore, isLoadingMore, onLoadMore]);
 
   return (
-    <Panel ref={ref} aria-labelledby="suggestions-heading" aria-busy={isLoading}>
+    <Panel ref={ref} aria-labelledby="suggestions-heading" aria-busy={isLoading} className={className}>
       <h2 id="suggestions-heading" className="mb-4">
         Suggestions
       </h2>
