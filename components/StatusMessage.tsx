@@ -1,19 +1,19 @@
 import type { ReactNode } from "react";
-import { Icon, type IconName } from "./Icon";
+import type { LucideIcon } from "lucide-react";
 
 interface StatusMessageProps {
   title: ReactNode;
   hint?: ReactNode;
-  icon?: IconName;
+  icon?: LucideIcon;
   children?: ReactNode;
 }
 
-export function StatusMessage({ title, hint, icon, children }: StatusMessageProps) {
+export function StatusMessage({ title, hint, icon: Icon, children }: StatusMessageProps) {
   return (
     <div role="status" className="flex w-full flex-1 flex-col items-center justify-center gap-1 py-10 text-center">
-      {icon && (
+      {Icon && (
         <span className="mb-3 grid size-14 place-items-center rounded-full bg-white/10 text-muted">
-          <Icon name={icon} className="size-6" strokeWidth={2} />
+          <Icon aria-hidden="true" className="size-6" strokeWidth={2} />
         </span>
       )}
       <div className="font-bold">{title}</div>

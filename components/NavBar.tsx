@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Icon } from "./Icon";
+import { Search, X } from "lucide-react";
 import { Logo } from "./Logo";
 
 interface NavBarProps {
@@ -19,7 +19,7 @@ export function NavBar({ query, onQueryChange }: NavBarProps) {
     <nav className="mb-4 flex flex-wrap items-center justify-center gap-3 bg-black p-4 sm:mb-8 sm:px-8 lg:grid lg:grid-cols-[1fr_minmax(0,25rem)_1fr]">
       <Logo />
       <div className="relative w-full max-w-100 lg:max-w-none">
-        <Icon name="search" className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-placeholder" />
+        <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-placeholder" />
         <input
           ref={inputRef}
           type="search"
@@ -37,7 +37,7 @@ export function NavBar({ query, onQueryChange }: NavBarProps) {
             aria-label="Clear search"
             className="focus-ring absolute top-1/2 right-3 grid size-7 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/30"
           >
-            <Icon name="xMark" className="size-3.5" strokeWidth={3} />
+            <X aria-hidden="true" className="size-3.5" strokeWidth={3} />
           </button>
         )}
       </div>

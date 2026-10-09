@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Search, TriangleAlert } from "lucide-react";
 import { type Ref, useEffect, useRef } from "react";
 import { useInView } from "@/hooks/useInView";
 import { releaseYear } from "@/lib/format";
@@ -75,11 +76,11 @@ export function AlbumList({
           ))}
         </ul>
       ) : hasError ? (
-        <StatusMessage icon="warning" title="Something went wrong" hint="Couldn’t reach Spotify. Try again in a moment." />
+        <StatusMessage icon={TriangleAlert} title="Something went wrong" hint="Couldn’t reach Spotify. Try again in a moment." />
       ) : isLoading ? (
         <SkeletonRows count={6} withThumb />
       ) : (
-        <StatusMessage icon="search" title={`No albums found for “${query.trim()}”`} hint="Check the spelling or try another artist." />
+        <StatusMessage icon={Search} title={`No albums found for “${query.trim()}”`} hint="Check the spelling or try another artist." />
       )}
       {isLoadingMore && <SkeletonRows count={2} withThumb />}
       <div ref={endRef} aria-hidden="true" />

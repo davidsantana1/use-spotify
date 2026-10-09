@@ -7,7 +7,7 @@ import { paletteGradient } from "@/lib/colors";
 import { albumTypeLabel, pluralize, releaseYear } from "@/lib/format";
 import { spotifyCodeUrl } from "@/lib/spotify-code";
 import type { Album, Track } from "@/types/spotify";
-import { Icon } from "./Icon";
+import { ChevronLeft, ChevronRight, ExternalLink, Music } from "lucide-react";
 import { MetaLine } from "./MetaLine";
 import { SkeletonRows } from "./Skeleton";
 import { StatusMessage } from "./StatusMessage";
@@ -66,7 +66,7 @@ export function AlbumDetails({ album }: { album: Album }) {
             aria-label={`Back to ${album.name}`}
             className="focus-ring grid size-8 shrink-0 cursor-pointer place-items-center rounded-full bg-white/10 transition-colors hover:bg-accent hover:text-black"
           >
-            <Icon name="chevronLeft" strokeWidth={3} />
+            <ChevronLeft aria-hidden="true" className="size-4" strokeWidth={3} />
           </button>
         )}
         <ol className="flex min-w-0 flex-1 items-center gap-1.5 text-sm">
@@ -87,7 +87,7 @@ export function AlbumDetails({ album }: { album: Album }) {
           </li>
           {track && (
             <li aria-current="page" className="flex min-w-0 items-center gap-1.5">
-              <Icon name="chevronRight" className="size-3.5 shrink-0 text-muted" strokeWidth={3} />
+              <ChevronRight aria-hidden="true" className="size-3.5 shrink-0 text-muted" strokeWidth={3} />
               <span className="truncate">{track.name}</span>
             </li>
           )}
@@ -158,13 +158,13 @@ export function AlbumDetails({ album }: { album: Album }) {
         </section>
       ) : (
         <StatusMessage
-          icon="musicNote"
+          icon={Music}
           title="No lyrics for this one"
           hint={`We couldn’t find lyrics for “${track.name}”. It might be instrumental, or just not transcribed yet.`}
         >
           <a href={track.external_urls.spotify} target="_blank" rel="noreferrer" className="pill-primary">
             Listen on Spotify
-            <Icon name="external" className="size-3.5" />
+            <ExternalLink aria-hidden="true" className="size-3.5" />
             <span className="sr-only">(opens in a new tab)</span>
           </a>
           <button type="button" onClick={() => selectTrack(null)} className="pill-ghost">
