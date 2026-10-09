@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-spotify: #1ed760;
+  --color-spotify-hover: #1bc757;
+  --color-surface: #1e1e1e;
+  --color-input: #4a4a4a;
+  --color-placeholder: #c5c5c5;
+  --color-divider: #4f4f4f;
+  --color-item-hover: #424242;
+  --color-muted: #dfdfdf;
+
+  --breakpoint-sm: 37.5rem;
+  --breakpoint-lg: 60rem;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility highlight {
+  background-position: bottom;
+  background-size: 100% 30%;
+  background-repeat: no-repeat;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
