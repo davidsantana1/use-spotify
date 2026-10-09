@@ -1,5 +1,6 @@
 "use client";
 
+import { Music, TriangleAlert } from "lucide-react";
 import { useRef, useState } from "react";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { useAlbum, useAlbumSearch } from "@/hooks/useSpotify";
@@ -66,7 +67,7 @@ export function SpotifySearch() {
               ) : album.data ? (
                 <AlbumDetails key={album.data.id} album={album.data} />
               ) : (
-                <StatusMessage icon="warning" title="Couldn’t load this album" hint="Pick it again or try another one." />
+                <StatusMessage icon={TriangleAlert} title="Couldn’t load this album" hint="Pick it again or try another one." />
               )}
             </Panel>
           )}
@@ -74,7 +75,7 @@ export function SpotifySearch() {
       ) : (
         <main className="px-4 pt-8">
           <StatusMessage
-            icon="musicNote"
+            icon={Music}
             title={<h1 className="text-[2em]">Search a Song!</h1>}
             hint="Find an album, pick a track, read the lyrics."
           />
