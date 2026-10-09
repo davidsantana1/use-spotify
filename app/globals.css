@@ -3,15 +3,28 @@
 @theme {
   --color-spotify: #1ed760;
   --color-spotify-hover: #1bc757;
+  --color-spotify-classic: #1db954;
+  --color-spotify-classic-hover: #1aa34a;
   --color-surface: #1e1e1e;
   --color-input: #4a4a4a;
   --color-placeholder: #c5c5c5;
   --color-divider: #4f4f4f;
-  --color-item-hover: #424242;
+  --color-item-hover: rgb(255 255 255 / 0.07);
+  --color-item-active: rgb(255 255 255 / 0.13);
   --color-muted: #dfdfdf;
 
   --breakpoint-sm: 37.5rem;
   --breakpoint-lg: 60rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@theme inline {
+  --color-accent: color-mix(in oklab, var(--accent, var(--color-spotify)) 70%, white);
 }
 
 @utility no-scrollbar {
@@ -19,6 +32,37 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 3px solid var(--color-spotify);
+    outline-offset: 2px;
+  }
+}
+
+@utility row-button {
+  @apply focus-ring flex w-full cursor-pointer items-center gap-3 rounded-lg p-2 text-left transition-colors hover:bg-item-hover aria-current:bg-item-active;
+}
+
+@utility pill {
+  @apply focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-full px-4 py-2 text-sm font-bold transition-colors;
+}
+
+@utility pill-primary {
+  @apply pill bg-spotify-classic text-white hover:bg-spotify-classic-hover;
+}
+
+@utility pill-ghost {
+  @apply pill bg-white/10 hover:bg-white/20;
+}
+
+@utility eyebrow {
+  @apply text-xs tracking-widest text-muted uppercase;
+}
+
+@utility skeleton {
+  @apply animate-pulse rounded-md bg-white/10;
 }
 
 @utility highlight {
@@ -32,4 +76,10 @@ body {
   color: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
