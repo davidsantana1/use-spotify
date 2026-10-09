@@ -50,23 +50,23 @@ function toArtist({ id, name }: Artist): Artist {
   return { id, name };
 }
 
-export function toSimplifiedAlbum({ id, name, images }: SimplifiedAlbum): SimplifiedAlbum {
-  return { id, name, images };
+export function toSimplifiedAlbum({ id, name, images, artists, release_date }: SimplifiedAlbum): SimplifiedAlbum {
+  return { id, name, images, artists: artists.map(toArtist), release_date };
 }
 
 export function toAlbum(album: Album): Album {
   return {
     ...toSimplifiedAlbum(album),
     uri: album.uri,
-    release_date: album.release_date,
+    album_type: album.album_type,
     total_tracks: album.total_tracks,
-    artists: album.artists.map(toArtist),
     external_urls: album.external_urls,
     tracks: {
-      items: album.tracks.items.map(({ id, name, uri, artists, external_urls }) => ({
+      items: album.tracks.items.map(({ id, name, uri, duration_ms, artists, external_urls }) => ({
         id,
         name,
         uri,
+        duration_ms,
         artists: artists.map(toArtist),
         external_urls,
       })),
